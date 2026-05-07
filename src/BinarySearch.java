@@ -1,21 +1,22 @@
-
-record Node (
-        int value,
-        Node left,
-        Node right) { }
-
 void main() {
-    var n1 = new Node(1, null, null);
-    var n3 = new Node(3, null, null);
-    var n5 = new Node(5, null, null);
-    var n7 = new Node(7, null, null);
-    var n2 = new Node(2, n1, n3);
-    var n6 = new Node(6, n5, n7);
-    var n4 = new Node(4, n2, n6);
-
-    IO.println(search(7, n4));
+    IO.println(execute(new int[] {1, 3, 5, 6, 7, 8, 9, 10, 14, 34, 35}, 7));
 }
 
-boolean search(int value, Node head) {
+boolean execute(int[] arr, int target) {
+
+    var l = 0;
+    var h = arr.length - 1;
+    
+    while(l <= h) {
+        var m = (l + h) / 2;
+
+        if(target == arr[m])
+            return true;
+        else if (target < arr[m]) 
+            h = m - 1;
+         else
+            l = m + 1;
+    }
+    
     return false;
 }
